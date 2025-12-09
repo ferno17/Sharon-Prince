@@ -10,8 +10,15 @@
             --card-bg: #1a1a1a;
             --text-main: #ffffff;
             --text-secondary: #a1a1a1;
-            --accent-color: #d4a373; /* Earthy tone for Social Work */
+            --accent-color: #d4a373; /* Earthy Gold */
+            --accent-hover: #b08d55;
             --font-main: 'Inter', sans-serif;
+            --transition-speed: 0.4s; /* Slower = Classier */
+        }
+
+        /* 1. SMOOTH SCROLLING ENABLED HERE */
+        html {
+            scroll-behavior: smooth;
         }
 
         * {
@@ -35,19 +42,24 @@
         }
 
         section {
-            padding: 80px 0;
+            padding: 100px 0; /* More breathing room */
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: 0.3s;
+            transition: all var(--transition-speed) ease;
         }
 
         /* --- Header / Hero --- */
         header {
-            padding: 40px 0;
-            border-bottom: 1px solid #333;
+            padding: 30px 0;
+            position: sticky; /* Keeps nav visible slightly */
+            top: 0;
+            background: rgba(17, 17, 17, 0.9); /* Glassmorphism effect */
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .nav-flex {
@@ -60,18 +72,51 @@
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: -1px;
+            transition: color var(--transition-speed) ease;
+        }
+        
+        .logo:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        /* Nav Link Underline Animation */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .hero {
-            padding: 100px 0;
+            padding: 120px 0;
             text-align: left;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-weight: 800;
+            opacity: 0; 
+            animation: fadeIn 1.2s ease forwards; /* Intro Animation */
         }
 
         .hero span {
@@ -83,97 +128,135 @@
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-secondary);
             max-width: 600px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards 0.3s;
         }
 
+        /* Smooth Button Hover */
         .cta-btn {
             display: inline-block;
             background-color: var(--text-main);
             color: var(--bg-color);
-            padding: 15px 30px;
+            padding: 16px 36px;
             border-radius: 50px;
             font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* "Springy" feel */
         }
 
         .cta-btn:hover {
             background-color: var(--accent-color);
+            transform: scale(1.05); /* Subtle growth */
+            box-shadow: 0 10px 20px rgba(212, 163, 115, 0.2);
         }
 
         /* --- About Section --- */
         .section-header {
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
+            color: var(--accent-color);
+            margin-bottom: 50px;
             display: block;
         }
 
-        /* --- Experience Timeline --- */
+        /* --- Experience Timeline (Interactive) --- */
         .experience-item {
             display: flex;
             justify-content: space-between;
             border-top: 1px solid #333;
-            padding: 30px 0;
+            padding: 40px 20px;
+            transition: background-color 0.4s ease, padding-left 0.4s ease;
+            cursor: default;
+        }
+
+        /* Hover effect on Experience Rows */
+        .experience-item:hover {
+            background-color: #1a1a1a;
+            padding-left: 35px; /* Slight slide to right */
+            border-color: var(--accent-color);
         }
 
         .exp-role h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 5px;
         }
 
         .exp-role p {
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+
+        .experience-item:hover .exp-role p {
             color: var(--accent-color);
         }
 
         .exp-desc {
             max-width: 500px;
             color: var(--text-secondary);
+            font-size: 1rem;
         }
 
         .exp-date {
             font-weight: 600;
+            color: var(--text-secondary);
         }
 
-        /* --- Initiatives / Grid --- */
+        /* --- Cards (Classy Hover) --- */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
         .card {
             background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px); /* Lifts up */
+            border-color: rgba(212, 163, 115, 0.3); /* Subtle glow border */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background-color: #222;
         }
 
         .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
         }
 
         .card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
         .tag {
             display: inline-block;
-            background: #333;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-top: 15px;
+            background: #2a2a2a;
+            color: var(--text-secondary);
+            padding: 6px 14px;
+            border-radius: 20px; /* Pill shape */
+            font-size: 0.75rem;
+            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .card:hover .tag {
+            background: var(--accent-color);
+            color: #000;
         }
 
         /* --- Skills Section --- */
@@ -184,10 +267,19 @@
         }
 
         .skill-item {
-            border: 1px solid #333;
-            padding: 15px 25px;
+            border: 1px solid #444;
+            padding: 12px 28px;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-item:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: scale(1.05);
         }
 
         /* --- Stats --- */
@@ -197,54 +289,68 @@
             margin-top: 50px;
             border-top: 1px solid #333;
             border-bottom: 1px solid #333;
-            padding: 40px 0;
+            padding: 60px 0;
         }
 
         .stat-box {
             text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
             display: block;
+            color: var(--text-main);
         }
 
         .stat-label {
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
         }
 
         /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 100px 0;
+            padding: 120px 0 60px;
             background-color: #0d0d0d;
         }
 
         footer h2 {
             font-size: 3rem;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .social-links a {
-            margin: 0 15px;
+            margin: 0 20px;
             font-size: 1.1rem;
-            border-bottom: 1px solid transparent;
+            color: var(--text-secondary);
+            position: relative;
         }
 
         .social-links a:hover {
-            border-bottom: 1px solid var(--accent-color);
             color: var(--accent-color);
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- Mobile Responsive --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .experience-item { flex-direction: column; gap: 20px; }
-            .stats-container { flex-direction: column; gap: 40px; }
+            .hero h1 { font-size: 2.8rem; }
+            .experience-item { flex-direction: column; gap: 20px; padding: 30px 0; }
+            .experience-item:hover { padding-left: 0; background-color: transparent; } /* Disable slide on mobile */
+            .stats-container { flex-direction: column; gap: 50px; }
+            .nav-links { display: none; } /* Simplified for mobile example */
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -254,15 +360,16 @@
     <header>
         <div class="container nav-flex">
             <div class="logo">Sharon Prince.</div>
-            <nav>
-                <a href="#about" style="margin-right: 20px;">About</a>
-                <a href="#experience" style="margin-right: 20px;">Experience</a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#work">Focus Areas</a>
                 <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="about">
         <div class="container">
             <h1>Hi! I'm Sharon Prince.<br>
             <span>Social Worker & <span class="highlight">Academic</span></span></h1>
