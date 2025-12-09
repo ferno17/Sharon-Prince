@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharon Prince | Social Worker & Educator</title>
+    <style>
+        :root {
+            --bg-color: #111111;
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent-color: #d4a373; /* Earthy tone for Social Work */
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+
+        /* --- Layout Utilities --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        /* --- Header / Hero --- */
+        header {
+            padding: 40px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero {
+            padding: 100px 0;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero span {
+            color: var(--text-secondary);
+        }
+
+        .hero .highlight {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* --- About Section --- */
+        .section-header {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        /* --- Experience Timeline --- */
+        .experience-item {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #333;
+            padding: 30px 0;
+        }
+
+        .exp-role h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .exp-role p {
+            color: var(--accent-color);
+        }
+
+        .exp-desc {
+            max-width: 500px;
+            color: var(--text-secondary);
+        }
+
+        .exp-date {
+            font-weight: 600;
+        }
+
+        /* --- Initiatives / Grid --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+
+        /* --- Skills Section --- */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-item {
+            border: 1px solid #333;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Stats --- */
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            padding: 40px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 100px 0;
+            background-color: #0d0d0d;
+        }
+
+        footer h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid transparent;
+        }
+
+        .social-links a:hover {
+            border-bottom: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .experience-item { flex-direction: column; gap: 20px; }
+            .stats-container { flex-direction: column; gap: 40px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <div class="logo">Sharon Prince.</div>
+            <nav>
+                <a href="#about" style="margin-right: 20px;">About</a>
+                <a href="#experience" style="margin-right: 20px;">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Hi! I'm Sharon Prince.<br>
+            <span>Social Worker & <span class="highlight">Academic</span></span></h1>
+            <p>MSW Graduate & Former Assistant Professor at Rajagiri School of Social Science. Dedicated to community development, social research, and empowering the next generation of changemakers.</p>
+            <a href="mailto:sharon@example.com" class="cta-btn">Get in touch</a>
+        </div>
+    </section>
+
+    <section id="work">
+        <div class="container">
+            <span class="section-header">{01} — Focus Areas</span>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Academic Teaching</h3>
+                    <p>Delivered lectures and guided fieldwork for MSW students, focusing on social policy and community organization.</p>
+                    <span class="tag">Education</span>
+                </div>
+                <div class="card">
+                    <h3>Community Outreach</h3>
+                    <p>Led initiatives for rural development and organized workshops on mental health awareness.</p>
+                    <span class="tag">Social Work</span>
+                </div>
+                <div class="card">
+                    <h3>Research & Policy</h3>
+                    <p>Conducted extensive research on social welfare schemes and their impact on marginalized communities.</p>
+                    <span class="tag">Research</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <span class="section-header">{02} — Professional Journey</span>
+
+            <div class="experience-item">
+                <div class="exp-role">
+                    <h3>Assistant Professor</h3>
+                    <p>Rajagiri School of Social Science</p>
+                </div>
+                <div class="exp-desc">
+                    Responsible for curriculum planning, student mentorship, and supervising field action projects. Facilitated seminars on contemporary social issues.
+                </div>
+                <div class="exp-date">20XX — 20XX</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-role">
+                    <h3>MSW Trainee</h3>
+                    <p>Fieldwork Placement</p>
+                </div>
+                <div class="exp-desc">
+                    Worked directly with NGOs to implement welfare programs. Conducted case studies and group work sessions.
+                </div>
+                <div class="exp-date">20XX — 20XX</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <span class="section-header">{03} — Core Competencies</span>
+            <div class="skills-list">
+                <div class="skill-item">Curriculum Development</div>
+                <div class="skill-item">Case Work</div>
+                <div class="skill-item">Social Research</div>
+                <div class="skill-item">Community Organization</div>
+                <div class="skill-item">Counseling</div>
+                <div class="skill-item">Public Speaking</div>
+                <div class="skill-item">Project Management</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Students Mentored</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Research Papers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Let's make an impact together.</h2>
+            <p style="color: #666; margin-bottom: 30px;">Open for research collaborations and guest lectures.</p>
+            
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Email</a>
+                <a href="#">Twitter</a>
+            </div>
+
+            <p style="margin-top: 80px; font-size: 0.8rem; color: #444;">
+                © 2024 Sharon Prince. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
